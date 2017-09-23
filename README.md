@@ -2,4 +2,4 @@
 
 #============================
 
-#An annoying app that will alert the user of the time at a given innterval
+#An annoying app that will alert the user of the time at a given interval
