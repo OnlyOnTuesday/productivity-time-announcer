@@ -1,4 +1,4 @@
-nan#will keep track of time and make an announcement at a set interval
+#will keep track of time and make an announcement at a set interval
 
 import time
 from playsound import playsound
