@@ -14,11 +14,12 @@ def user_config():
     start_hour = hours - current_hour
     start_minute = minutes - current_minute
     start_second = seconds - current_second
-    #call on function to convert all to seconds and begin countdown 
+    #convert all times to seconds
+    seconds_till_start = seconds_time(start_hour, start_minute, start_second)
 
     #make a countdown to keep track of how long it has been since the last alarm
     #based off of user input
-    ##
+    
     #Have user input how often it should go off
     #Have user input days on which it should go off
 
@@ -50,3 +51,23 @@ def army_time(time_of_day, hours):
         return hours
     elif time_of_day == "am":
         return hours
+
+def seconds_time(start_hour, start_minute, start_second):
+    #convert all hours and minutes to seconds
+    start_hour *= 3600
+    start_minute *= 60
+    #add all three function inputs to get the amount of time until the start
+    #of the alarm in seconds
+    seconds_till_start = start_hour + start_minute + start_second
+    return seconds_till_start
+
+def countdown(seconds_till_start):
+    #Counts down to when alarm should start
+    #may be moved to announcer.py
+    time_to_start = time.time() + seconds_till_start
+    while True:
+        time.time()
+        time.sleep(5)
+            if time.time() = time_to_start:
+                #code for alarm to sound
+                #probably in announcer.py
