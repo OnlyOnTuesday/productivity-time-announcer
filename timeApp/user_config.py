@@ -19,7 +19,7 @@ def user_config():
 
     #make a countdown to keep track of how long it has been since the last alarm
     #based off of user input
-    
+
     #Have user input how often it should go off
     #Have user input days on which it should go off
 
@@ -60,14 +60,3 @@ def seconds_time(start_hour, start_minute, start_second):
     #of the alarm in seconds
     seconds_till_start = start_hour + start_minute + start_second
     return seconds_till_start
-
-def countdown(seconds_till_start):
-    #Counts down to when alarm should start
-    #may be moved to announcer.py
-    time_to_start = time.time() + seconds_till_start
-    while True:
-        time.time()
-        time.sleep(5)
-            if time.time() = time_to_start:
-                #code for alarm to sound
-                #probably in announcer.py

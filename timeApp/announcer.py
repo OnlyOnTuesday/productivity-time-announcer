@@ -1,16 +1,28 @@
 #will keep track of time and make an announcement at a set interval
 
 import time
-from playsound import playsound
+import user_config
+import wavPlayer2
 
-#outputs the time in seconds since the epoch format
-TIME = time.time()
+def countdown(seconds_till_start):
+    #Counts down to when alarm should start
+    #may be moved to announcer.py
+    time_to_start = time.time() + seconds_till_start
+    while True:
+        time.time()
+        time.sleep(5)
+            if time.time() = time_to_start:
 
-#outputs the time in hour : minute : second format
-LOCALTIME =str( time.localtime().tm_hour ) + " : " + str(time.localtime().tm_min) + " : " + str(time.localtime().tm_sec )
+                #if asctime = name of file -> init
+                #code for alarm to sound
+                #probably in announcer.py
 
-def alarm(interval):
-    if LOCALTIME
-
-    #fix interval in user_config
-    #play sound files at interval
+def choose_file():
+    #take the asctime and exclude the extraneous output
+    #(day, Month, day of month, and year)
+    hour_now = time.asctime().split(" ")
+    hour_now = hour_now[3]
+    hour_now = hour_now.split(":")
+    hour_now = 24 - hour_now[0]
+    if hour_now ==
+    #create library of time to spelling?
