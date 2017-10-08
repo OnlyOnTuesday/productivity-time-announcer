@@ -5,7 +5,7 @@ import time
 #When should the alarm sound
 def user_config():
     user_input = input("""Please enter when you would like the alarm to sound. \n
-      Use the 'hour, minute, second, am/pm' format""" end = " ")
+    Use the 'hour, minute, second, am/pm' format""")
     #turn user_input into usable variables
     hours, minutes, seconds = determine_variable(user_input)
     #gather the current asctime

@@ -2,7 +2,7 @@
 
 import time
 import user_config
-import wavPlayer2
+import wavPlayer
 import sys
 import user_config
 #make the wav files available for import
@@ -24,17 +24,17 @@ def countdown(seconds_till_start):
     while True:
         time.time()
         time.sleep(5)
-            if time.time() = time_to_start:
-                file_to_play, ampm = choose_file()
-                #play the time
-                wavPlayer.__init__(file_to_play)
-                wavPlayer.play
-                wavPlayer.close
-                #play am or pm
-                wavPlayer.__init__(ampm)
-                wavPlayer.play
-                wavPlayer.close
-                
+        if time.time() == time_to_start:
+            file_to_play, ampm = choose_file()
+            #play the time
+            wavPlayer.__init__(file_to_play)
+            wavPlayer.play
+            wavPlayer.close
+            #play am or pm
+            wavPlayer.__init__(ampm)
+            wavPlayer.play
+            wavPlayer.close
+
 def choose_file():
     #take the asctime and exclude the extraneous output
     #(day, Month, day of month, and year)
@@ -48,14 +48,14 @@ def choose_file():
             #turn the hour into a importable module file
             file_to_call = times_library[hour_now] + ".wav"
             from times import file_to_call
-            from times import pm.wav
+            from times import pm
             pm = pm.wav
             return file_to_call, pm
         else:
             #turn the hour into a importable module file
             file_to_call = times_library[hour_now] + ".wav"
             from times import file_to_call
-            from times import am.wav
+            from times import am
             am = am.wav
             return file_to_call, am
 
