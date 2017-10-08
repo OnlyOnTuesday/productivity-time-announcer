@@ -1,42 +1,32 @@
-"""PyAudio Example: Play a wave file"""
-#copied from example documentation page of PyAudio website
+#Thanks to Mikhail Churbanov from StackOverflow for making this
+#based off of the pyaudio documentation
 
 import pyaudio
 import wave
 import sys
 
-CHUNK = 1024
+class AudioFile:
+    chunk = 1024
 
-if len(sys.argv) < 2:
-    print("Plays a wave file.\n\nUsage: %s filename.wav" % sys.argv[0])
-    sys.exit(-1)
+    def __init__(self, file):
+        """ Init audio stream """
+        self.wf = wave.open(file, 'rb')
+        self.p = pyaudio.PyAudio()
+        self.stream = self.p.open(
+            format = self.p.get_format_from_width(self.wf.getsampwidth()),
+            channels = self.wf.getnchannels(),
+            rate = self.wf.getframerate(),
+            output = True
+        )
 
-##########################################################################
-#Absolutely necessary code to play audio below
-##########################################################################
+    def play(self):
+        """ Play entire file """
+        data = self.wf.readframes(self.chunk)
+        while data != '':
+            self.stream.write(data)
+            data = self.wf.readframes(self.chunk)
 
-wf = wave.open(sys.argv[1], 'rb')
-
-# instantiate PyAudio (1)
-p = pyaudio.PyAudio()
-
-# open stream (2)
-stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),
-                channels=wf.getnchannels(),
-                rate=wf.getframerate(),
-                output=True)
-
-# read data
-data = wf.readframes(CHUNK)
-
-# play stream (3)
-while len(data) > 0:
-    stream.write(data)
-    data = wf.readframes(CHUNK)
-
-# stop stream (4)
-stream.stop_stream()
-stream.close()
-
-# close PyAudio (5)
-p.terminate()
+    def close(self):
+        """ Graceful shutdown """
+        self.stream.close()
+        self.p.terminate()

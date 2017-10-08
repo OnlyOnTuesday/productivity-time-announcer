@@ -16,6 +16,7 @@ def user_config():
     start_second = seconds - current_second
     #convert all times to seconds
     seconds_till_start = seconds_time(start_hour, start_minute, start_second)
+    return seconds_till_start
 
     #make a countdown to keep track of how long it has been since the last alarm
     #based off of user input
