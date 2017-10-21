@@ -3,6 +3,7 @@
 import time
 import user_config
 import wavPlayer
+import math
 import sys
 import user_config
 #make the wav files available for import
@@ -17,14 +18,14 @@ times_library = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"se
 #allows us to know if it is am or pm
 greater_than_twelve = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
-def countdown(seconds_till_start):
-    user_config.user_config()
+def countdown():
+    seconds_till_start = user_config.user_config()
     #Counts down to when alarm should start
-    time_to_start = time.time() + seconds_till_start
+    time_to_start = math.floor(time.time() + seconds_till_start)
     while True:
-        time.time()
+        math.floor(time.time())
         time.sleep(5)
-        if time.time() == time_to_start:
+        if math.floor(time.time()) >= time_to_start:
             file_to_play, ampm = choose_file()
             #play the time
             wavPlayer.__init__(file_to_play)
@@ -60,3 +61,5 @@ def choose_file():
             return file_to_call, am
 
     #create library of time to spelling?
+
+countdown()

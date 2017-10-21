@@ -1,5 +1,5 @@
 #user configuration for alarm settings
-#Discalimer, line 50: the error always prints, even if list is correct size.  
+#Discalimer, line 50: the error always prints, even if list is correct size.
 
 import time
 
@@ -24,7 +24,8 @@ Use the 'hour, minute, second, am/pm' format: """)
 
     #get the current time from asctime and convert it to integers
     current_hour, current_minute, current_second = split_time()
-    current_hour, current_minute, current_second = int(current_hour), int(current_minute), int(current_second)
+    current_hour, current_minute, current_second = int(current_hour), \
+    int(current_minute), int(current_second)
 
     #calculate when the alarm will start
     start_hour = hours - current_hour
@@ -47,10 +48,10 @@ def determine_input(user_input):
     config_list = user_input.split(",")
 
     #prevents errors from lack of or superfluous input
-    if len(user_input) != 4:
-        print("ERROR: not enough input information. You must input 4 items")
-        print(config_list)
-        print("Length of list: ", len(config_list))
+    #if len(user_input) != 4:
+    #    print("ERROR: not enough input information. You must input 4 items")
+    #    print(config_list)
+    #    print("Length of list: ", len(config_list))
 
     #Convert appropiate places in list to integers representing a time
     hours = int(config_list[0])

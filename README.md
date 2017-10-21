@@ -6,5 +6,7 @@
 #Currently only works on an hourly basis
 
 #USAGE
+
 #CURRENTLY DEBUGGING
+
 #type command "python user_config.py" into terminal and follow instructions
