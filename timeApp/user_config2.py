@@ -1,6 +1,6 @@
 #user configuration for alarm settings
+#Discalimer, line 50: the error always prints, even if list is correct size.  
 
-import sys
 import time
 
 def user_config():
