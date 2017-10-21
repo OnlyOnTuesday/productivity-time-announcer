@@ -14,11 +14,11 @@ Use the 'hour, minute, second, am/pm' format: """)
     hours, minutes, seconds = determine_input(user_input)
 
     #for sake of debugging
-    if seconds is NoneType:
+    if type(seconds) is NoneType:
         print("ERROR: seconds is NoneType")
-    elif minutes is NoneType:
+    elif type(minutes) is NoneType:
         print("ERROR: minutes is NoneType")
-    elif hours is NoneType:
+    elif type(hours) is NoneType:
         print("ERROR: hours is NoneType")
 
     #get the current time from asctime and convert it to integers
@@ -48,7 +48,8 @@ def determine_input(user_input):
     #prevents errors from lack of or superfluous input
     if len(user_input) != 4:
         print("ERROR: not enough input information")
-        break
+        print(config_list)
+        print(len(config_list))
 
     #Convert appropiate places in list to integers representing a time
     hours = int(config_list[0])
@@ -65,16 +66,17 @@ def determine_input(user_input):
 def army_time(hours, time_of_day):
     """Convert the hours input into a 24-hour day format"""
 
-    if time_of_day == "pm":
+    #added space to am and pm because of input style
+    if time_of_day == " pm":
         hours += 12
         return hours
 
-    elif hours == "am":
+    elif hours == " am":
         return hours
 
     else:
-        print("ERROR: time of day must be 'am' or 'pm'")
-
+        print("ERROR: time of day must be ' am' or ' pm'")
+        print(time_of_day)
 
 
 def split_time():
