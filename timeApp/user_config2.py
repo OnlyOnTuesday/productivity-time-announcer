@@ -1,5 +1,6 @@
 #user configuration for alarm settings
 
+import sys
 import time
 
 def user_config():
@@ -14,11 +15,11 @@ Use the 'hour, minute, second, am/pm' format: """)
     hours, minutes, seconds = determine_input(user_input)
 
     #for sake of debugging
-    if type(seconds) is NoneType:
+    if seconds is None:
         print("ERROR: seconds is NoneType")
-    elif type(minutes) is NoneType:
+    elif minutes is None:
         print("ERROR: minutes is NoneType")
-    elif type(hours) is NoneType:
+    elif hours is None:
         print("ERROR: hours is NoneType")
 
     #get the current time from asctime and convert it to integers
@@ -47,9 +48,9 @@ def determine_input(user_input):
 
     #prevents errors from lack of or superfluous input
     if len(user_input) != 4:
-        print("ERROR: not enough input information")
+        print("ERROR: not enough input information. You must input 4 items")
         print(config_list)
-        print(len(config_list))
+        print("Length of list: ", len(config_list))
 
     #Convert appropiate places in list to integers representing a time
     hours = int(config_list[0])
@@ -60,7 +61,7 @@ def determine_input(user_input):
     #convert to a 24-hour day format
     hours = army_time(hours, time_of_day)
 
-    return hours, minutes, seconds
+    return int(hours), minutes, seconds
 
 
 def army_time(hours, time_of_day):
@@ -71,12 +72,12 @@ def army_time(hours, time_of_day):
         hours += 12
         return hours
 
-    elif hours == " am":
+    elif time_of_day == " am":
         return hours
 
     else:
         print("ERROR: time of day must be ' am' or ' pm'")
-        print(time_of_day)
+        print("You input: ", time_of_day)
 
 
 def split_time():
