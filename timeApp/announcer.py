@@ -1,11 +1,10 @@
 #will keep track of time and make an announcement at a set interval
 
 import time
-import user_config
 import wavPlayer
 import math
 import sys
-import user_config
+import config
 #make the wav files available for import
 sys.path.insert(0, "../times")
 
@@ -19,47 +18,61 @@ times_library = {1:"one", 2:"two", 3:"three", 4:"four", 5:"five", 6:"six", 7:"se
 greater_than_twelve = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 
 def countdown():
-    seconds_till_start = user_config.user_config()
-    #Counts down to when alarm should start
+    """Create a mechanism to keep track of when the alarm should begin, and initialize
+    it when the time comes"""
+
+    seconds_till_start = config.user_config()
+
     time_to_start = math.floor(time.time() + seconds_till_start)
+
     while True:
+
         math.floor(time.time())
         time.sleep(5)
+
         if math.floor(time.time()) >= time_to_start:
+
             file_to_play, ampm = choose_file()
+
             #play the time
             wavPlayer.__init__(file_to_play)
             wavPlayer.play
             wavPlayer.close
+
             #play am or pm
             wavPlayer.__init__(ampm)
             wavPlayer.play
             wavPlayer.close
 
+
 def choose_file():
-    #take the asctime and exclude the extraneous output
-    #(day, Month, day of month, and year)
+    """Determin what audio file to play based on the time"""
+
+    #filter unneeded output from time.asctime()
     hour_now = time.asctime().split(" ")
     hour_now = hour_now[3]
     hour_now = hour_now.split(":")
     hour_now = int(hour_now[0])
-    if hour_now in times_library:
-        #if it is afternoon
-        if hour_now in greater_than_twelve:
-            #turn the hour into a importable module file
-            file_to_call = times_library[hour_now] + ".wav"
-            from times import file_to_call
-            from times import pm
-            pm = pm.wav
-            return file_to_call, pm
-        else:
-            #turn the hour into a importable module file
-            file_to_call = times_library[hour_now] + ".wav"
-            from times import file_to_call
-            from times import am
-            am = am.wav
-            return file_to_call, am
 
-    #create library of time to spelling?
+    #allows us to append the right file (am.wav, pm.wav)
+    if hour_now in greater_than_twelve:
 
-countdown()
+        file_to_call = str(times_library[hour_now]) + ".wav"
+
+        from times import file_to_call
+
+        pm = pm.wav
+        from times import pm
+
+        return file_to_call, pm
+
+    else:
+
+        file_to_call = str(times_library[hour_now]) + ".wav"
+
+        from times import file_to_call
+
+        am = am.wav
+        from times import am
+
+        return file_to_call, am

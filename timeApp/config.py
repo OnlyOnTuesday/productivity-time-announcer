@@ -102,7 +102,3 @@ def seconds_time(start_hour, start_minute, start_second):
     seconds_till_start = start_hour + start_minute + start_second
 
     return seconds_till_start
-
-
-
-user_config()
