@@ -5,6 +5,7 @@ import wavPlayer
 import math
 import sys
 import config
+import importlib
 #make the wav files available for import
 sys.path.insert(0, "../times")
 
@@ -46,7 +47,7 @@ def countdown():
 
 
 def choose_file():
-    """Determin what audio file to play based on the time"""
+    """Determine what audio file to play based on the time"""
 
     #filter unneeded output from time.asctime()
     hour_now = time.asctime().split(" ")
@@ -57,22 +58,29 @@ def choose_file():
     #allows us to append the right file (am.wav, pm.wav)
     if hour_now in greater_than_twelve:
 
-        file_to_call = str(times_library[hour_now]) + ".wav"
+        file_to_call = str(times_library[hour_now])
 
-        from times import file_to_call
+        importlib.import_module(file_to_call, "times")
+        #from times import file_to_call
 
         pm = pm.wav
+        importlib.import_module(".pm", "times")
         from times import pm
 
         return file_to_call, pm
 
     else:
 
-        file_to_call = str(times_library[hour_now]) + ".wav"
+        file_to_call = str(times_library[hour_now])
 
-        from times import file_to_call
+        importlib.import_module(file_to_call, "times")
+        #from times import file_to_call
 
         am = am.wav
-        from times import am
+        importlib.import_module(".am", "times")
+        #from times import am
 
         return file_to_call, am
+
+
+countdown()
