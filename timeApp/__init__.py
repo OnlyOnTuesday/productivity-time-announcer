@@ -1,0 +1,16 @@
+import importlib
+
+importlib.import_module("am", "times")
+importlib.import_module("pm", "times")
+importlib.import_module("one", "times")
+importlib.import_module("two", "times")
+importlib.import_module("three", "times")
+importlib.import_module("four", "times")
+importlib.import_module("five", "times")
+importlib.import_module("six", "times")
+importlib.import_module("seven", "times")
+importlib.import_module("eight", "times")
+importlib.import_module("nine", "times")
+importlib.import_module("ten", "times")
+importlib.import_module("eleven", "times")
+importlib.import_module("twelve", "times")
