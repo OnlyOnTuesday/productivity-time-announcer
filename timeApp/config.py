@@ -87,8 +87,9 @@ def split_time():
     #retrieve only the time from time.asctime,
     #split it by hours, minutes, and seconds
     only_time = time.asctime().split(" ")
-    only_time = only_time[3]
+    only_time = only_time[4]
     only_time = only_time.split(":")
+    
     return only_time
 
 

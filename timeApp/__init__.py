@@ -1,16 +1,19 @@
-import importlib
+__all__ = ["am", "pm", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", \
+           "ten", "eleven", "twelve"]
 
-importlib.import_module("am", "times")
-importlib.import_module("pm", "times")
-importlib.import_module("one", "times")
-importlib.import_module("two", "times")
-importlib.import_module("three", "times")
-importlib.import_module("four", "times")
-importlib.import_module("five", "times")
-importlib.import_module("six", "times")
-importlib.import_module("seven", "times")
-importlib.import_module("eight", "times")
-importlib.import_module("nine", "times")
-importlib.import_module("ten", "times")
-importlib.import_module("eleven", "times")
-importlib.import_module("twelve", "times")
+#import importlib
+
+#importlib.import_module("am.wav", "times")
+#importlib.import_module("pm.wav", "times")
+#importlib.import_module("one.wav", "times")
+#importlib.import_module("two.wav", "times")
+#importlib.import_module("three.wav", "times")
+#importlib.import_module("four.wav", "times")
+#importlib.import_module("five.wav", "times")
+#importlib.import_module("six.wav", "times")
+#importlib.import_module("seven.wav", "times")
+#importlib.import_module("eight.wav", "times")
+#importlib.import_module("nine.wav", "times")
+#importlib.import_module("ten.wav", "times")
+#importlib.import_module("eleven.wav", "times")
+#importlib.import_module("twelve.wav", "times")

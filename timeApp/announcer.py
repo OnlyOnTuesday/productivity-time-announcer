@@ -6,7 +6,7 @@ import math
 import sys
 import config
 import importlib
-#from times import __init__ 
+#from times import __init__
 #make the wav files available for import
 sys.path.insert(0, "../times")
 
@@ -61,8 +61,9 @@ def choose_file():
 
         file_to_call = str(times_library[hour_now])
 
-        importlib.import_module(file_to_call, "times")
+        #importlib.import_module(file_to_call, "times")
         #from times import file_to_call
+        importlib.__import__(file_to_call)
 
         pm = pm.wav
         from times import pm
@@ -73,13 +74,18 @@ def choose_file():
 
         file_to_call = str(times_library[hour_now])
 
-        from times import file_to_call
+        #from times import file_to_call
+        importlib.__import__(file_to_call)
 
-        am = am.wav
-        importlib.import_module(".am", "times")
+
+        #importlib.import_module(".am", "times")
         #from times import am
 
-        return file_to_call, am
+        time_of_day_sound_file = am
+
+        importlib.__import__(times.am)
+
+        return file_to_call, time_of_day_sound_file
 
 
 countdown()
